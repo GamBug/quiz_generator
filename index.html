@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Quiz Generator</h1>
+            <p class="subtitle">Tạo và làm quiz từ định dạng văn bản đơn giản</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('create')">✨ Tạo Quiz</button>
+            <button class="tab" onclick="switchTab('quiz')">🎯 Làm Quiz</button>
+        </div>
+
+        <!-- Create Panel -->
+        <div id="create-panel" class="panel active">
+            <div class="card">
+                <h3 class="card-title"><span class="icon">📋</span> Nhập nội dung Quiz</h3>
+                <textarea id="quiz-input" placeholder="Nhập quiz theo định dạng (mỗi câu một dòng):
+
+1 Câu hỏi thứ nhất? A. Đáp án A B. Đáp án B (C). Đáp án đúng D. Đáp án D
+2 Câu hỏi thứ hai? (A). Đáp án đúng B. Đáp án B C. Đáp án C D. Đáp án D
+3 Câu hỏi thứ ba? A. Đáp án A (B). Đáp án đúng C. Đáp án C D. Đáp án D"></textarea>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="parseQuiz()">🚀 Tạo Quiz</button>
+                    <button class="btn btn-secondary" onclick="loadSample()">📄 Xem ví dụ</button>
+                    <button class="btn btn-secondary" onclick="clearInput()">🗑️ Xóa</button>
+                </div>
+
+                <div class="shuffle-options">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="shuffle-questions" checked>
+                        <span class="toggle-text">🔀 Xào câu hỏi</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="shuffle-answers" checked>
+                        <span class="toggle-text">🎲 Xào đáp án</span>
+                    </label>
+                </div>
+
+                <div class="format-example">
+                    <strong>📌 Định dạng:</strong>
+                    1 Câu hỏi? A. Đáp án A B. Đáp án B (C). Đáp án đúng D. Đáp án D
+
+                    • Mỗi câu hỏi trên một dòng
+                    • Bắt đầu bằng số thứ tự
+                    • Đáp án đúng được đánh dấu: <span class="highlight">(A). (B). (C). (D).</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Panel -->
+        <div id="quiz-panel" class="panel">
+            <div id="quiz-content" class="quiz-container">
+                <!-- Quiz content will be generated here -->
+            </div>
+
+            <div id="no-quiz" class="card" style="text-align: center; padding: 3rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📭</div>
+                <h3 style="margin-bottom: 0.5rem;">Chưa có Quiz nào</h3>
+                <p style="color: var(--text-secondary);">Hãy chuyển sang tab "Tạo Quiz" để bắt đầu</p>
+            </div>
+        </div>
+
+        <footer class="credit">
+            Made with ❤️ by <strong>Breadinner</strong> and <strong>Tris</strong>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
